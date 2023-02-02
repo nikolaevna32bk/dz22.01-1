@@ -3,24 +3,38 @@
 // 82 -> 10
 // 9012 -> 12
 
-int Count(int number)
-{
-    int Count = 0;
-    if (number == 0)
-    {
-        Console.WriteLine("0 -> 1");
-    }
+int number = ReadInt("Введите число: ");
+int len = NumberLen(number);
+SumNumbers(number, len);
 
-    else
-    {
-        while (number != 0)
-        {
-            number = number / 10;
-            Count = Count + 1;
-        }
-    }
-    return Count;
+
+int ReadInt(string message)
+{
+    Console.Write(message);
+    return Convert.ToInt32(Console.ReadLine());
 }
-Console.Write("Введите число: ");
-int A = Convert.ToInt32(Console.ReadLine());
-Console.WriteLine($"{A} -> {Count(A)}");
+
+int NumberLen(int a)
+{
+    int index = 0;
+    while (a > 0)
+    {
+        a /= 10;
+        index++;
+    }
+    return index;
+}
+void SumNumbers(int n, int len)
+{
+    int sum = 0;
+    for (int i = 1; i <= len; i++)
+    {
+        sum += n % 10;
+        n /= 10;
+    }
+    Console.WriteLine(sum);
+}
+
+
+
+
